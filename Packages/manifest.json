@@ -1,7 +1,10 @@
 {
   "dependencies": {
     "com.cysharp.unitask": "https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask",
+    "com.sebaslab.svelto.ecs": "3.4.5",
     "com.unity.addressables": "1.21.9",
+    "com.unity.burst": "1.8.4",
+    "com.unity.collections": "1.2.4",
     "com.unity.feature.development": "1.0.1",
     "com.unity.textmeshpro": "3.0.6",
     "com.unity.timeline": "1.7.2",
@@ -37,5 +40,19 @@
     "com.unity.modules.vr": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
     "com.unity.modules.xr": "1.0.0"
-  }
+  },
+  "scopedRegistries": [
+    {
+      "name": "OpenUPM",
+      "url": "https://package.openupm.com",
+      "scopes": [
+        "org.nuget.system.buffers",
+        "org.nuget.system.memory",
+        "org.nuget.system.numerics.vectors",
+        "org.nuget.system.runtime.compilerservices.unsafe",
+        "com.sebaslab.svelto.common",
+        "com.sebaslab.svelto.ecs"
+      ]
+    }
+  ]
 }
