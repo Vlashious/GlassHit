@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Code.Rendering
 {
@@ -10,7 +9,6 @@ namespace Code.Rendering
     public sealed class PrefabProvider : ScriptableObject, IPrefabProvider
     {
         [SerializeField] private List<PrefabEntry> _entries = new();
-        [SerializeField] private WorldHierarchy _hierarchy;
 
         public IReadOnlyDictionary<int, GameObject> Prefabs { get; private set; }
 
@@ -23,8 +21,6 @@ namespace Code.Rendering
         {
             return Prefabs[id];
         }
-
-        public WorldHierarchy Hierarchy => _hierarchy;
     }
 
     [Serializable]

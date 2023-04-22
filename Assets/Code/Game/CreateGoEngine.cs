@@ -1,4 +1,5 @@
 using Code.Rendering;
+using Code.Rendering.Components;
 using Svelto.ECS;
 using UnityEngine;
 
@@ -19,13 +20,13 @@ namespace Code.Game
         {
             if (Input.GetKeyDown(KeyCode.A))
             {
-                var init = _entityFactory.BuildEntity<TestDescriptor>(new EGID(_index++, World.Default));
+                var init = _entityFactory.BuildEntity<TestDescriptor>(new EGID(_index++, Groups.World));
                 init.Get<Prefab>().Id = 0;
             }
 
             if (Input.GetKeyDown(KeyCode.D))
             {
-                var init = _entityFactory.BuildEntity<TestDescriptor>(new EGID(_index++, World.Default));
+                var init = _entityFactory.BuildEntity<TestDescriptor>(new EGID(_index++, Groups.World));
                 init.Get<Prefab>().Id = 1;
             }
         }

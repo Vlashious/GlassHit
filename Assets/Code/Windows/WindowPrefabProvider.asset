@@ -10,11 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4fdf39c4c834418ebb08fb4ca7a11df4, type: 3}
-  m_Name: PrefabProvider
+  m_Name: WindowPrefabProvider
   m_EditorClassIdentifier: 
   _entries:
   - Id: 0
-    Prefab: {fileID: 3775636745134715944, guid: c2a94aa8bbcc7e14da2d74ae06010a20, type: 3}
-  - Id: 1
-    Prefab: {fileID: 7556348120391890787, guid: bacfc2128d349294c8c68b6728fc3a1c, type: 3}
-  _hierarchy: {fileID: 2342661455333834363, guid: a7512d95e4fe41447b84314cf6e7b983, type: 3}
+    Prefab: {fileID: 6000493710492516799, guid: 36ca5522b9914d34a988e822b7742636, type: 3}

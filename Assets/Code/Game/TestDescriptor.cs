@@ -1,4 +1,5 @@
 using Code.Rendering;
+using Code.Rendering.Components;
 using Svelto.ECS;
 
 namespace Code.Game

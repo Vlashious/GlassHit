@@ -1,7 +1,7 @@
 using Svelto.DataStructures.Experimental;
 using Svelto.ECS;
 
-namespace Code.Rendering
+namespace Code.Rendering.Components
 {
     public struct ObjectHolder : IEntityComponent
     {

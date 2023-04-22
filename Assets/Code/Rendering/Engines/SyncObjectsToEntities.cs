@@ -1,7 +1,8 @@
+using Code.Rendering.Components;
 using Svelto.ECS;
 using UnityEngine;
 
-namespace Code.Rendering
+namespace Code.Rendering.Engines
 {
     public sealed class SyncObjectsToEntities : IQueryingEntitiesEngine, IStepEngine
     {

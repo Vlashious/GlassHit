@@ -1,6 +1,6 @@
 using Svelto.ECS;
 
-namespace Code.Rendering
+namespace Code.Rendering.Components
 {
     public struct Prefab : IEntityComponent
     {

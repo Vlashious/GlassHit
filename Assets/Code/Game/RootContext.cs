@@ -1,6 +1,6 @@
-using System;
 using System.Collections.Generic;
 using Code.Rendering;
+using Code.Windows;
 using Svelto.ECS;
 using Svelto.ECS.Schedulers;
 using UnityEngine;
@@ -10,6 +10,8 @@ namespace Code.Game
     public sealed class RootContext : MonoBehaviour
     {
         [SerializeField] private PrefabProvider _prefabProvider;
+        [SerializeField] private PrefabProvider _windowPrefabProvider;
+        [SerializeField] private WorldHierarchyProvider _hierarchyProvider;
 
         private readonly SimpleEntitiesSubmissionScheduler _scheduler = new();
         private readonly IList<IStepEngine> _updateEngines = new List<IStepEngine>();
@@ -20,8 +22,13 @@ namespace Code.Game
             EnginesRoot root = new(_scheduler);
             var entityFunctions = root.GenerateEntityFunctions();
             var entityFactory = root.GenerateEntityFactory();
-            await RenderContext.Compose(_prefabProvider, _updateEngines, _engines);
+            await RenderContext.Compose(_prefabProvider,
+                                        _windowPrefabProvider,
+                                        _hierarchyProvider,
+                                        _updateEngines,
+                                        _engines);
             await GameContext.Compose(_updateEngines, entityFactory);
+            await WindowsContext.Compose(entityFactory);
 
             foreach (var engine in _engines)
             {
@@ -40,7 +47,7 @@ namespace Code.Game
             {
                 _updateEngines[i].Step();
             }
-            
+
             _scheduler.SubmitEntities();
         }
     }
