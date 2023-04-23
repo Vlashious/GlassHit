@@ -7,18 +7,18 @@ namespace Code.Rendering
 {
     public static class RenderContext
     {
-        public static UniTask Compose(IPrefabProvider prefabProvider,
+        public static UniTask Compose(GameObjectManager gameObjectManager,
+                                      IPrefabProvider prefabProvider,
                                       IPrefabProvider windowPrefabProvider,
                                       IHierarchyProvider hierarchyProvider,
                                       IList<IStepEngine> updateEngines,
                                       IList<IEngine> engines)
         {
-            var goManager = new GameObjectManager();
-            var goCreator = new ObjectCreateEngine(goManager,
+            var goCreator = new ObjectCreateEngine(gameObjectManager,
                                                    prefabProvider,
                                                    windowPrefabProvider,
                                                    hierarchyProvider);
-            var syncGoToEntity = new SyncObjectsToEntities(goManager);
+            var syncGoToEntity = new SyncObjectsToEntities(gameObjectManager);
 
             updateEngines.Add(syncGoToEntity);
             engines.Add(goCreator);

@@ -1,12 +1,13 @@
+using Cysharp.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Code.Windows.StartScreen
 {
     public sealed class StartScreenView : MonoBehaviour
     {
-        public void OnButtonClick()
-        {
-            Debug.Log($"Click!");
-        }
+        [SerializeField] private Button _button;
+
+        public IUniTaskAsyncEnumerable<AsyncUnit> ButtonClicks => _button.OnClickAsAsyncEnumerable();
     }
 }

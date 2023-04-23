@@ -22,13 +22,15 @@ namespace Code.Game
             EnginesRoot root = new(_scheduler);
             var entityFunctions = root.GenerateEntityFunctions();
             var entityFactory = root.GenerateEntityFactory();
-            await RenderContext.Compose(_prefabProvider,
+            var goManager = new GameObjectManager();
+            await RenderContext.Compose(goManager,
+                                        _prefabProvider,
                                         _windowPrefabProvider,
                                         _hierarchyProvider,
                                         _updateEngines,
                                         _engines);
             await GameContext.Compose(_updateEngines, entityFactory);
-            await WindowsContext.Compose(entityFactory);
+            await WindowsContext.Compose(goManager, entityFactory, _engines);
 
             foreach (var engine in _engines)
             {

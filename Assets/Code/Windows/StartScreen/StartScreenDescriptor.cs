@@ -14,7 +14,8 @@ namespace Code.Windows.StartScreen
             _componentBuilders = new IComponentBuilder[]
             {
                 new ComponentBuilder<Prefab>(),
-                new ComponentBuilder<ObjectHolder>()
+                new ComponentBuilder<ObjectHolder>(),
+                new ComponentBuilder<StartScreen>()
             };
         }
     }
