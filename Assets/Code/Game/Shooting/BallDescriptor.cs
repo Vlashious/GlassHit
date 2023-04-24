@@ -1,16 +1,15 @@
-using Code.Rendering;
 using Code.Rendering.Components;
 using Svelto.ECS;
 
-namespace Code.Game
+namespace Code.Game.Shooting
 {
-    public sealed class TestDescriptor : IEntityDescriptor
+    public sealed class BallDescriptor : IEntityDescriptor
     {
         public IComponentBuilder[] componentsToBuild => _componentBuilders;
 
         private static readonly IComponentBuilder[] _componentBuilders;
 
-        static TestDescriptor()
+        static BallDescriptor()
         {
             _componentBuilders = new IComponentBuilder[]
             {

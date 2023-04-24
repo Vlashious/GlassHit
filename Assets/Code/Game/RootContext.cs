@@ -19,6 +19,7 @@ namespace Code.Game
 
         private async void Awake()
         {
+            var inputs = new Inputs();
             EnginesRoot root = new(_scheduler);
             var entityFunctions = root.GenerateEntityFunctions();
             var entityFactory = root.GenerateEntityFactory();
@@ -29,7 +30,7 @@ namespace Code.Game
                                         _hierarchyProvider,
                                         _updateEngines,
                                         _engines);
-            await GameContext.Compose(_updateEngines, entityFactory);
+            await GameContext.Compose(_updateEngines, entityFactory, inputs);
             await WindowsContext.Compose(goManager, entityFactory, _engines);
 
             foreach (var engine in _engines)
@@ -41,6 +42,8 @@ namespace Code.Game
             {
                 root.AddEngine(engine);
             }
+            
+            inputs.Enable();
         }
 
         private void Update()
