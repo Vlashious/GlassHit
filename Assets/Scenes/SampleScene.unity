@@ -170,6 +170,7 @@ MonoBehaviour:
   _prefabProvider: {fileID: 11400000, guid: cde4b91059475af49b732fd06a916dc4, type: 2}
   _windowPrefabProvider: {fileID: 11400000, guid: de412f4fd35d30e40963d9a5a9015e55, type: 2}
   _hierarchyProvider: {fileID: 11400000, guid: cc676fb061cc26f45a548910ae6cc253, type: 2}
+  _camera: {fileID: 741855244}
 --- !u!1 &524925174
 GameObject:
   m_ObjectHideFlags: 0

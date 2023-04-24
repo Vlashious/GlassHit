@@ -12,6 +12,7 @@ namespace Code.Game
         [SerializeField] private PrefabProvider _prefabProvider;
         [SerializeField] private PrefabProvider _windowPrefabProvider;
         [SerializeField] private WorldHierarchyProvider _hierarchyProvider;
+        [SerializeField] private Camera _camera;
 
         private readonly SimpleEntitiesSubmissionScheduler _scheduler = new();
         private readonly IList<IStepEngine> _updateEngines = new List<IStepEngine>();
@@ -30,7 +31,7 @@ namespace Code.Game
                                         _hierarchyProvider,
                                         _updateEngines,
                                         _engines);
-            await GameContext.Compose(_updateEngines, entityFactory, inputs);
+            await GameContext.Compose(_updateEngines, entityFactory, inputs, _camera);
             await WindowsContext.Compose(goManager, entityFactory, _engines);
 
             foreach (var engine in _engines)

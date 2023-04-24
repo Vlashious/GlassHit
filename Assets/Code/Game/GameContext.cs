@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Code.Game.Shooting;
 using Cysharp.Threading.Tasks;
 using Svelto.ECS;
+using UnityEngine;
 
 namespace Code.Game
 {
@@ -9,9 +10,10 @@ namespace Code.Game
     {
         public static UniTask Compose(IList<IStepEngine> updateEngines,
                                       IEntityFactory entityFactory,
-                                      Inputs inputs)
+                                      Inputs inputs,
+                                      Camera camera)
         {
-            var shootBallEngine = new ShootBallEngine(inputs, entityFactory);
+            var shootBallEngine = new ShootBallEngine(camera, inputs, entityFactory);
 
             updateEngines.Add(shootBallEngine);
 
