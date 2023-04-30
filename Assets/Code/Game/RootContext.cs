@@ -1,6 +1,6 @@
 using System.Collections.Generic;
+using Code.Physics;
 using Code.Rendering;
-using Code.Windows;
 using Svelto.ECS;
 using Svelto.ECS.Schedulers;
 using UnityEngine;
@@ -32,7 +32,7 @@ namespace Code.Game
                                         _updateEngines,
                                         _engines);
             await GameContext.Compose(_updateEngines, entityFactory, inputs, _camera);
-            await WindowsContext.Compose(goManager, entityFactory, _engines);
+            await PhysicsContext.Compose(_updateEngines);
 
             foreach (var engine in _engines)
             {
@@ -43,7 +43,7 @@ namespace Code.Game
             {
                 root.AddEngine(engine);
             }
-            
+
             inputs.Enable();
         }
 

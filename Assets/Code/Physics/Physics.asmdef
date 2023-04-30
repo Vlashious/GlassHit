@@ -1,12 +1,10 @@
 {
-    "name": "Windows",
+    "name": "Physics",
     "rootNamespace": "",
     "references": [
         "GUID:0c3d971be5ab3c929b4ddcd28867102d",
-        "GUID:0a5fffbdcdc2a814ab6abe32fd3b1859",
-        "GUID:f51ebe6a0ceec4240a699833d6309b23",
         "GUID:12b54cc0583e3ccba858b8655d12ebf4",
-        "GUID:5c01796d064528144a599661eaab93a6"
+        "GUID:f51ebe6a0ceec4240a699833d6309b23"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

@@ -1,8 +1,8 @@
 using Svelto.ECS;
 
-namespace Code.Rendering.Components
+namespace Code.Physics
 {
-    public struct Position : IEntityComponent
+    public struct Force : IEntityComponent
     {
         public float X;
         public float Y;
