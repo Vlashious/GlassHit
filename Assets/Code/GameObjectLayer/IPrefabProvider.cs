@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Code.Rendering
+namespace Code.GameObjectLayer
 {
     public interface IPrefabProvider
     {

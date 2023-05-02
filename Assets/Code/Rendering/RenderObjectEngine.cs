@@ -1,10 +1,12 @@
-using Code.Rendering.Components;
+using Code.GameObjectLayer;
+using Code.GameObjectLayer.Components;
+using Code.Shared;
 using Svelto.ECS;
 using UnityEngine;
 
-namespace Code.Rendering.Engines
+namespace Code.Rendering
 {
-    public sealed class ObjectCreateEngine : IQueryingEntitiesEngine, IReactOnAddEx<Prefab>
+    internal sealed class ObjectCreateEngine : IQueryingEntitiesEngine, IReactOnAddEx<Prefab>
     {
         private readonly GameObjectManager _manager;
         private readonly IPrefabProvider _prefabProvider;
@@ -45,27 +47,15 @@ namespace Code.Rendering.Engines
             }
         }
 
-        private void GetCorrectBundle(ExclusiveGroupStruct group, out IPrefabProvider prefabProvider, out Transform root)
+        private void GetCorrectBundle(ExclusiveGroupStruct group, out IPrefabProvider prefabProvider,
+                                      out Transform root)
         {
             prefabProvider = default;
             root = default;
-            if (group == Groups.World)
+            if (World.Includes(group))
             {
                 prefabProvider = _prefabProvider;
                 root = _hierarchy.Root;
-                return;
-            }
-
-            if (group == Groups.Windows)
-            {
-                prefabProvider = _windowPrefabProvider;
-                root = _hierarchy.WindowRoot;
-                return;
-            }
-
-            if (group == Groups.Popups)
-            {
-                root = _hierarchy.PopupRoot;
                 return;
             }
         }

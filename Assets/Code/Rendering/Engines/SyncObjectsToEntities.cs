@@ -1,14 +1,18 @@
+using Code.GameObjectLayer;
+using Code.GameObjectLayer.Components;
 using Code.Physics;
-using Code.Rendering.Components;
 using Svelto.ECS;
+using Unity.Burst;
 using UnityEngine;
 
 namespace Code.Rendering.Engines
 {
+    [BurstCompile]
     public sealed class SyncObjectsToEntities : IQueryingEntitiesEngine, IStepEngine
     {
         private readonly GameObjectManager _manager;
         public EntitiesDB entitiesDB { get; set; }
+
         public string name => nameof(SyncObjectsToEntities);
 
         public SyncObjectsToEntities(GameObjectManager manager)
@@ -20,11 +24,13 @@ namespace Code.Rendering.Engines
         {
         }
 
+        [BurstCompile]
         public void Step()
         {
-            var kek = entitiesDB.FindGroups<Position, ObjectHolder>();
+            var groupsWithPositions = entitiesDB.FindGroups<Position, ObjectHolder>();
 
-            foreach (var ((pos, obj, count), _) in entitiesDB.QueryEntities<Position, ObjectHolder>(kek))
+            foreach (var ((pos, obj, count), _) in
+                     entitiesDB.QueryEntities<Position, ObjectHolder>(groupsWithPositions))
             {
                 for (int i = 0; i < count; i++)
                 {

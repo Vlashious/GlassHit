@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Code.Rendering
+namespace Code.GameObjectLayer
 {
     [CreateAssetMenu(fileName = "WorldHierarchyProvider", menuName = "SO/World Hierarchy provider")]
     public sealed class WorldHierarchyProvider : ScriptableObject, IHierarchyProvider

@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using Code.GameObjectLayer;
+using Code.Physics;
 using Code.Rendering.Engines;
 using Cysharp.Threading.Tasks;
 using Svelto.ECS;

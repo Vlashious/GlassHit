@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Code.GameObjectLayer;
 using Code.Physics;
 using Code.Rendering;
 using Svelto.ECS;
@@ -25,14 +26,14 @@ namespace Code.Game
             var entityFunctions = root.GenerateEntityFunctions();
             var entityFactory = root.GenerateEntityFactory();
             var goManager = new GameObjectManager();
+            await PhysicsContext.Compose(goManager, _updateEngines);
+            await GameContext.Compose(_updateEngines, entityFactory, inputs, _camera);
             await RenderContext.Compose(goManager,
                                         _prefabProvider,
                                         _windowPrefabProvider,
                                         _hierarchyProvider,
                                         _updateEngines,
                                         _engines);
-            await GameContext.Compose(_updateEngines, entityFactory, inputs, _camera);
-            await PhysicsContext.Compose(_updateEngines);
 
             foreach (var engine in _engines)
             {

@@ -1,13 +1,8 @@
 {
-    "name": "Physics",
+    "name": "Shared",
     "rootNamespace": "",
     "references": [
-        "GUID:0c3d971be5ab3c929b4ddcd28867102d",
-        "GUID:12b54cc0583e3ccba858b8655d12ebf4",
-        "GUID:f51ebe6a0ceec4240a699833d6309b23",
-        "GUID:2665a8d13d1b3f18800f46e256720795",
-        "GUID:bfdb9348e0e24fddb23e8d92cb3ceee1",
-        "GUID:bfb11709418644898dd61655751f3896"
+        "GUID:0c3d971be5ab3c929b4ddcd28867102d"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

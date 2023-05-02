@@ -1,7 +1,7 @@
 using Svelto.DataStructures.Experimental;
 using Svelto.ECS;
 
-namespace Code.Rendering.Components
+namespace Code.GameObjectLayer.Components
 {
     public struct ObjectHolder : IEntityComponent
     {

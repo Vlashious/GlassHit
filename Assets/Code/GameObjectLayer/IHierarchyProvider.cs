@@ -1,4 +1,4 @@
-namespace Code.Rendering
+namespace Code.GameObjectLayer
 {
     public interface IHierarchyProvider
     {

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Code.Rendering
+namespace Code.GameObjectLayer
 {
     public sealed class WorldHierarchy : MonoBehaviour
     {

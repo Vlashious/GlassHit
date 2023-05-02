@@ -1,5 +1,5 @@
+using Code.GameObjectLayer.Components;
 using Code.Physics;
-using Code.Rendering.Components;
 using Svelto.ECS;
 
 namespace Code.Game.Shooting
@@ -16,8 +16,7 @@ namespace Code.Game.Shooting
             {
                 new ComponentBuilder<Position>(),
                 new ComponentBuilder<Prefab>(),
-                new ComponentBuilder<ObjectHolder>(),
-                new ComponentBuilder<Force>()
+                new ComponentBuilder<ObjectHolder>()
             };
         }
     }

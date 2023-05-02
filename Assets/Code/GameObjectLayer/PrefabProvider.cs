@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace Code.Rendering
+namespace Code.GameObjectLayer
 {
     [CreateAssetMenu(fileName = "PrefabProvider", menuName = "SO/Prefab provider")]
     public sealed class PrefabProvider : ScriptableObject, IPrefabProvider

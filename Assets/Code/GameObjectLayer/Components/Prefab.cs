@@ -1,6 +1,6 @@
 using Svelto.ECS;
 
-namespace Code.Rendering.Components
+namespace Code.GameObjectLayer.Components
 {
     public struct Prefab : IEntityComponent
     {
