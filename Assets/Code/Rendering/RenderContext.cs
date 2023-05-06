@@ -1,7 +1,6 @@
-using System.Collections.Generic;
 using Code.GameObjectLayer;
-using Code.Physics;
 using Code.Rendering.Engines;
+using Code.Shared;
 using Cysharp.Threading.Tasks;
 using Svelto.ECS;
 
@@ -13,8 +12,8 @@ namespace Code.Rendering
                                       IPrefabProvider prefabProvider,
                                       IPrefabProvider windowPrefabProvider,
                                       IHierarchyProvider hierarchyProvider,
-                                      IList<IStepEngine> updateEngines,
-                                      IList<IEngine> engines)
+                                      OrderedList<IStepEngine> updateEngines,
+                                      OrderedList<IEngine> engines)
         {
             var goCreator = new ObjectCreateEngine(gameObjectManager,
                                                    prefabProvider,
@@ -22,8 +21,8 @@ namespace Code.Rendering
                                                    hierarchyProvider);
             var syncGoToEntity = new SyncObjectsToEntities(gameObjectManager);
 
-            updateEngines.Add(syncGoToEntity);
-            engines.Add(goCreator);
+            updateEngines.Add(syncGoToEntity, EngineUpdateGroup.Third);
+            engines.Add(goCreator, EngineUpdateGroup.First);
 
             return UniTask.CompletedTask;
         }

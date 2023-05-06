@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Code.Rendering
 {
-    internal sealed class ObjectCreateEngine : IQueryingEntitiesEngine, IReactOnAddEx<Prefab>
+    internal sealed class ObjectCreateEngine : IQueryingEntitiesEngine, IReactOnAddEx<ObjectHolder>
     {
         private readonly GameObjectManager _manager;
         private readonly IPrefabProvider _prefabProvider;
@@ -33,7 +33,7 @@ namespace Code.Rendering
             _hierarchy = Object.Instantiate(_hierarchyProvider.Hierarchy);
         }
 
-        public void Add((uint start, uint end) rangeOfEntities, in EntityCollection<Prefab> entities,
+        public void Add((uint start, uint end) rangeOfEntities, in EntityCollection<ObjectHolder> entities,
                         ExclusiveGroupStruct groupID)
         {
             var (buffer, count) = entities;
@@ -41,9 +41,10 @@ namespace Code.Rendering
             {
                 var prefab = buffer[i];
                 GetCorrectBundle(groupID, out var provider, out var root);
-                var go = Object.Instantiate(provider.Get(prefab.Id), root);
+                var go = Object.Instantiate(provider.Get(prefab.PrefabId), root);
                 ref var objectHolder = ref entitiesDB.QueryEntity<ObjectHolder>(i, groupID);
                 objectHolder.Index = _manager.Add(go);
+                go.transform.position = objectHolder.Position.ToVector3();
             }
         }
 

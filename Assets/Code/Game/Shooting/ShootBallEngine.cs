@@ -1,5 +1,4 @@
 using Code.GameObjectLayer.Components;
-using Code.Physics;
 using Code.Rendering;
 using Code.Shared;
 using Svelto.ECS;
@@ -44,15 +43,10 @@ namespace Code.Game.Shooting
             var clickPosition = _playerInput.Main.Position.ReadValue<Vector2>();
             var worldClickPosition = _camera.ScreenToWorldPoint(new Vector3(clickPosition.x, clickPosition.y, 10));
             var initializer = _entityFactory.BuildEntity<BallDescriptor>(_index++, RigidbodiesInWorld.BuildGroup);
-            initializer.Init(new Prefab
+            initializer.Init(new ObjectHolder
             {
-                Id = 0
-            });
-            initializer.Init(new Position
-            {
-                X = worldClickPosition.x,
-                Y = worldClickPosition.y,
-                Z = worldClickPosition.z
+                PrefabId = 0,
+                Position = Position.FromVector3(worldClickPosition)
             });
         }
 

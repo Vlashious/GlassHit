@@ -1,6 +1,6 @@
 using Code.GameObjectLayer;
 using Code.GameObjectLayer.Components;
-using Code.Physics;
+using Code.Shared;
 using Svelto.ECS;
 using Unity.Burst;
 using UnityEngine;

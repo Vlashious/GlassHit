@@ -1,19 +1,16 @@
-using Code.GameObjectLayer;
 using Code.GameObjectLayer.Components;
 using Code.Shared;
 using Svelto.ECS;
-using Unity.Burst;
 
-namespace Code.Physics
+namespace Code.GameObjectLayer
 {
-    [BurstCompile]
-    internal sealed class SyncEntitiesToRigidbodies : IStepEngine, IQueryingEntitiesEngine
+    internal sealed class SyncEntitiesToGameObjects : IStepEngine, IQueryingEntitiesEngine
     {
         private readonly GameObjectManager _gameObjectManager;
         public EntitiesDB entitiesDB { get; set; }
-        public string name => nameof(SyncEntitiesToRigidbodies);
+        public string name => nameof(SyncEntitiesToGameObjects);
 
-        public SyncEntitiesToRigidbodies(GameObjectManager gameObjectManager)
+        public SyncEntitiesToGameObjects(GameObjectManager gameObjectManager)
         {
             _gameObjectManager = gameObjectManager;
         }
@@ -22,11 +19,11 @@ namespace Code.Physics
         {
         }
 
-        [BurstCompile]
         public void Step()
         {
+            var allObjectsAndPositions = entitiesDB.FindGroups<Position, ObjectHolder>();
             foreach (var ((positions, objects, count), _) in entitiesDB
-                         .QueryEntities<Position, ObjectHolder>(RigidbodiesInWorld.Groups))
+                         .QueryEntities<Position, ObjectHolder>(allObjectsAndPositions))
             {
                 for (int i = 0; i < count; i++)
                 {
