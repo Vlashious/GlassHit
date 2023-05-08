@@ -1,15 +1,12 @@
 {
-    "name": "Game",
+    "name": "Physics",
     "rootNamespace": "",
     "references": [
-        "GUID:0c3d971be5ab3c929b4ddcd28867102d",
-        "GUID:0a5fffbdcdc2a814ab6abe32fd3b1859",
         "GUID:f51ebe6a0ceec4240a699833d6309b23",
-        "GUID:8230c440db4e3ff4184d5e773c2aee40",
-        "GUID:75469ad4d38634e559750d17036d5f7c",
-        "GUID:bfdb9348e0e24fddb23e8d92cb3ceee1",
+        "GUID:0c3d971be5ab3c929b4ddcd28867102d",
         "GUID:bfb11709418644898dd61655751f3896",
-        "GUID:4398e2fdd3f84976aa2dafe749765e6c"
+        "GUID:bfdb9348e0e24fddb23e8d92cb3ceee1",
+        "GUID:12b54cc0583e3ccba858b8655d12ebf4"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

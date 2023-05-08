@@ -10,7 +10,7 @@ namespace Code.Shared
     {
     }
 
-    public sealed class RigidbodiesInWorld : GroupCompound<World, Rigidbodies>
+    public sealed class PhysicsWorld : GroupCompound<World, Rigidbodies>
     {
     }
 }

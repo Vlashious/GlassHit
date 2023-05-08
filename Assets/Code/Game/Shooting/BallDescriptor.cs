@@ -1,4 +1,5 @@
 using Code.GameObjectLayer.Components;
+using Code.Physics;
 using Code.Shared;
 using Svelto.ECS;
 
@@ -15,7 +16,8 @@ namespace Code.Game.Shooting
             _componentBuilders = new IComponentBuilder[]
             {
                 new ComponentBuilder<Position>(),
-                new ComponentBuilder<ObjectHolder>()
+                new ComponentBuilder<ObjectHolder>(),
+                new ComponentBuilder<Force>()
             };
         }
     }

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Code.GameObjectLayer;
+using Code.Physics;
 using Code.Rendering;
 using Code.Rendering.Engines;
 using Code.Shared;
@@ -25,6 +26,7 @@ namespace Code.Game
         {
             var inputs = new Inputs();
             EnginesRoot root = new(_scheduler);
+            var consumerFactory = root.GenerateConsumerFactory();
             var entityFunctions = root.GenerateEntityFunctions();
             var entityFactory = root.GenerateEntityFactory();
             var goManager = new GameObjectManager();
@@ -36,6 +38,7 @@ namespace Code.Game
                                         _hierarchyProvider,
                                         _updateEngines,
                                         _engines);
+            await PhysicsContext.Compose(goManager, _engines);
 
             _engines.Foreach(x => root.AddEngine(x));
             _updateEngines.Foreach(x => root.AddEngine(x));
