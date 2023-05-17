@@ -8,10 +8,12 @@ namespace Code.Physics
     public static class PhysicsContext
     {
         public static UniTask Compose(GameObjectManager gameObjectManager,
-                                      OrderedList<IEngine> engines)
+                                      OrderedList<IEngine> readyEngines)
         {
+            var listenToCollisionsEngine = new ListenToCollisionEngine(gameObjectManager);
             var applyForceEngine = new ApplyForceEngine(gameObjectManager);
-            engines.Add(applyForceEngine, EngineUpdateGroup.Second);
+            readyEngines.Add(listenToCollisionsEngine, EngineUpdateGroup.First);
+            readyEngines.Add(applyForceEngine, EngineUpdateGroup.Second);
             return UniTask.CompletedTask;
         }
     }
